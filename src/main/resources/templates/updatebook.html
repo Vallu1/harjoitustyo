@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update book data</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Update book data</h1>
+	<div>
+		<form th:object="${book}" th:action="@{/save}" action="#" method="post">
+			<input type="hidden" id="id" th:field="*{id}"/>
+		  	<label for="title">Kirjan nimi</label> <input type="text" id="title" th:field="${book.title}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="author">Kirjailija</label> <input type="text" id="author" th:field="${book.author}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="year">Vuosi</label> <input type="text" id="year" th:field="${book.year}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="isbn">ISBN</label> <input type="text" id="isbn" th:field="${book.isbn}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="price">Hinta</label> <input type="text" id="price" th:field="${book.price}" />
+		  	<div style="clear: both; display: block; height: 10px;"></div>	
+		  	
+		  	<label for="deplist">Category</label>
+			 <select id="deplist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${category}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>	
+	</div>
+</body>
+</html>
